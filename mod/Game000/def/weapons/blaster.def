@@ -334,6 +334,6 @@ entityDef damage_blastersplash_charged
 	
 	"damage"					"40"
 	"radius"					"50"
-	"knockback"					"30"
+	"knockback"					"30000"
 	"push"						"2500"
 }
