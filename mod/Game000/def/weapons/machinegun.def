@@ -92,8 +92,8 @@ entityDef weapon_machinegun
 	"inv_icon"					"gfx/guis/hud/icons/item_machinegun.tga"
 	"inv_name"					"#str_107406"
 
-	"fireRate"					".001"
-	"spread"					"5"
+	"fireRate"					".25"
+	"spread"					"4"
 
 	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 	"def_hitscan"				"hitscan_bullet"
@@ -118,8 +118,8 @@ entityDef weapon_machinegun
 	"ammoRegenStep"				"4"
 	"ammoRegenTime"				"1"
 
-	"recoilTime"				"380"
-	"recoilAngles"				"-0.1 0 0"
+	"recoilTime"				"430"
+	"recoilAngles"				"-0.2 0 0"
 	
 	// Mapping of modifications to indexes
   	"def_mod1"					"wpmod_machinegun_ammo"
