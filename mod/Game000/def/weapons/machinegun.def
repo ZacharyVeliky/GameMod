@@ -97,7 +97,7 @@ entityDef weapon_machinegun
 
 	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 	"def_hitscan"				"hitscan_bullet"
-	"def_althitscan"			"hitscan_zoomed_bullet"
+	"def_altprojectile"			"projectile_rocket"
 	
 	"ammoType"					"ammo_machinegun"
 	"ammoRequired"				"1"
@@ -142,8 +142,8 @@ entityDef weapon_machinegun
 	"flashlightRadius"			"400"
 	"flashlightAngle"			"15.0"
 	"flashlightTarget"			"900 0 0"
-	"flashlightUp"				"0 340 0"
-	"flashlightRight"			"0 0 -340"
+	"flashlightUp"				"0 600 0"
+	"flashlightRight"			"0 0 -600"
 	"flashlightPointLight"		"0"
 
 	"mtr_guiLightShader"		"lights/viewWeaponGuiLight"
@@ -174,7 +174,7 @@ entityDef weapon_machinegun
 	// Scope / Zoom
 	"spreadzoom"				"0"
 	"zoomFov"					"40"
-	"zoomTime"					".5"
+	"zoomTime"					".4"
 	"zoomHideCrosshair"			"0"
 	"gui_zoom"					"guis/weapons/machinegun_scope.gui"
 
