@@ -1139,6 +1139,11 @@ private:
 	stateResult_t			State_Legs_Land					( const stateParms_t& parms );
 	stateResult_t			State_Legs_Dead					( const stateParms_t& parms );
 	
+	//int onFire; // if the player is on fire
+	//idEntity* fireStarter;
+	//int fireTime;
+	//float fireDamage;
+
  	CLASS_STATES_PROTOTYPE( idPlayer );
 };
 
