@@ -14053,13 +14053,6 @@ void idPlayer::ResetCash()
 	ClampCash( minCash, maxCash );
 }
 
-//void idPlayer::updateFire()
-//{
-//	idVec3 damageDir = {};
-//	if ((!onFire) || (fireTime <= 0)) return;
-//	
-//}
-
 /**
  * Checks to see if the player can accept this item in their inventory
  *
