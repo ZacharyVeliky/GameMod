@@ -64,7 +64,7 @@ entityDef weapon_blaster
 
 	"spawnclass"				"idItem"
 	"weaponclass"				"rvWeaponBlaster"
-	"weaponname"				"Blaster"
+	"weaponname"				"Dagger"
 	"size"						"32 32 32"
 
   	"model_view"				"weapon_blaster_view"
@@ -81,7 +81,7 @@ entityDef weapon_blaster
 	"chargeTime"				".4"
 	"chargeDelay"				".1"
 	"chargeGlow"				"0 .4"
-	"fireRate"					".6"
+	"fireRate"					".4"
 	"spread"					".2"
 
 //	"def_projectile"			"projectile_blaster"
@@ -229,7 +229,7 @@ model weapon_blaster_world
 
 entityDef hitscan_blaster
 {
-	"range"						"100"
+	"range"						"75"
 
 	"fx_impact"					"effects/weapons/blaster/impact_default.fx"
 	"fx_impact_water"			"effects/ambient/splash_smll.fx"
@@ -313,7 +313,7 @@ entityDef projectile_blaster_charged
 entityDef damage_blaster
 {
 	"inherit"					"damage_bullet"
-	"damage"					"8"
+	"damage"					"18"
 
 	"fx_wound"					"effects/wounds/energy.fx"
 
