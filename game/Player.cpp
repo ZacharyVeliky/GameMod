@@ -5777,8 +5777,8 @@ void idPlayer::SelectWeapon( int num, bool force ) {
  				return;
  			}
 			idealWeapon = previousWeapon;
-/* NO PDA yet
-		} else if ( ( weapon_pda >= 0 ) && ( num == weapon_pda ) && ( inventory.pdas.Num() == 0 ) ) {
+ //NO PDA yet
+/* } else if ((weapon_pda >= 0) && (num == weapon_pda) && (inventory.pdas.Num() == 0)) {
 			ShowTip( spawnArgs.GetString( "text_infoTitle" ), spawnArgs.GetString( "text_noPDA" ), true );
 			return;
 */
@@ -14075,6 +14075,14 @@ int idPlayer::CanSelectWeapon(const char* weaponName)
 	}
 
 	return weaponNum;
+}
+
+// press button to show active side quests
+void idPlayer::Show_Quests() {
+	if (!tipUp) 
+		ShowTip(spawnArgs.GetString("text_infoTitle"), spawnArgs.GetString("text_noPDA"), true);
+	else 
+		hud->HandleNamedEvent("tipWindowDown");
 }
 
 // RITUAL END

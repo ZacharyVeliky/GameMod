@@ -23,6 +23,9 @@
 #if !defined(__INSTANCE_H__)
 	#include "../Instance.h"
 #endif
+#if !defined(__PLAYER_H__)
+	#include "../Player.h"
+#endif
 // RAVEN END
 
 #ifdef _WIN32
@@ -3022,11 +3025,14 @@ void Cmd_ShuffleTeams_f( const idCmdArgs& args ) {
 	gameLocal.mpGame.ShuffleTeams();
 }
 
-//void ShowDialogue(const idCmdArgs& args){
-//	idPlayer::SetHudOverlay(test, 10);
+//void Show_Dialogue(const idCmdArgs& args){
+//	Player.cpp
 //}
+ 
 
-void 
+void Cmd_Show_Dict(const idCmdArgs& args){
+	Player.cpp
+}
 
 #ifndef _FINAL
 void Cmd_ClientOverflowReliable_f( const idCmdArgs& args ) {
@@ -3238,7 +3244,9 @@ void idGameLocal::InitConsoleCommands( void ) {
 	cmdSystem->AddCommand( "buyMenu",				Cmd_ToggleBuyMenu_f,		CMD_FL_GAME,				"Toggle buy menu (if in a buy zone and the game type supports it)" );
 	cmdSystem->AddCommand( "buy",					Cmd_BuyItem_f,				CMD_FL_GAME,				"Buy an item (if in a buy zone and the game type supports it)" );
 //	cmdSystem->AddCommand( "meme",					Cmd_Meme_f,					CMD_FL_GAME,				"MEME");
-//	cmdSystem->AddCommand( "talk",					Cmd_Talk_f,					CMD_FL_GAME,				"Display the dialogue menu with the character the player is facing.");
+//	cmdSystem->AddCommand( "talk",					Show_Dialogue,				CMD_FL_GAME,				"Display the dialogue menu with the character the player is facing.");
+//	cmdSystem->AddCommand( "showQuests",			idPlayer::Show_Quests,		CMD_FL_GAME,				"Display the currently accepted side quest");
+	cmdSystem->AddCommand( "showDict",				Cmd_Show_Dict,			CMD_FL_GAME,				"Display the currently accepted side quest");
 // RITUAL END
 
 }
