@@ -3026,12 +3026,27 @@ void Cmd_ShuffleTeams_f( const idCmdArgs& args ) {
 }
 
 //void Show_Dialogue(const idCmdArgs& args){
-//	Player.cpp
+//	Player.cpp;
 //}
  
 
-void Cmd_Show_Dict(const idCmdArgs& args){
-	Player.cpp
+//void Cmd_Show_Dict(const idCmdArgs& args){
+//	Player.cpp;
+//}
+ 
+void Cmd_Show_Exp(const idCmdArgs& args) {
+
+	idPlayer* player;
+	int exp = player->GetPlayerExperience();
+
+	if (exp >= 0)
+		gameLocal.Printf("Player Experience: %d\n", exp);
+} 
+
+void Cmd_Print_Meme(const idCmdArgs& args){
+	if (1 == 1) {
+		gameLocal.Printf("unknown item\n");
+	}
 }
 
 #ifndef _FINAL
@@ -3246,7 +3261,9 @@ void idGameLocal::InitConsoleCommands( void ) {
 //	cmdSystem->AddCommand( "meme",					Cmd_Meme_f,					CMD_FL_GAME,				"MEME");
 //	cmdSystem->AddCommand( "talk",					Show_Dialogue,				CMD_FL_GAME,				"Display the dialogue menu with the character the player is facing.");
 //	cmdSystem->AddCommand( "showQuests",			idPlayer::Show_Quests,		CMD_FL_GAME,				"Display the currently accepted side quest");
-	cmdSystem->AddCommand( "showDict",				Cmd_Show_Dict,			CMD_FL_GAME,				"Display the currently accepted side quest");
+//	cmdSystem->AddCommand( "showDict",				Cmd_Show_Dict,				CMD_FL_GAME,					"Display the currently accepted side quest");
+	cmdSystem->AddCommand( "showExp",				Cmd_Show_Exp,				CMD_FL_GAME,					"Display the players experience points");
+	cmdSystem->AddCommand( "meme",					Cmd_Print_Meme,				CMD_FL_GAME,					"meme");
 // RITUAL END
 
 }

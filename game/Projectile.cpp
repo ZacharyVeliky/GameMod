@@ -245,6 +245,10 @@ void idProjectile::Create( idEntity* _owner, const idVec3 &start, const idVec3 &
 	idVec3		light_offset;
 	idVec3		tmp;
 	idMat3		axis;
+
+	//idVec3		fizzleDistance;
+	int			fizzleTime;
+	int			launchTimeFizzle;
 	
 	Unbind();
 
@@ -289,6 +293,15 @@ void idProjectile::Create( idEntity* _owner, const idVec3 &start, const idVec3 &
  	UpdateVisuals();
 
 	state = CREATED;
+
+	// remove the projectile after a short time
+
+	launchTimeFizzle = gameLocal.time;
+	fizzleTime = gameLocal.time - 1;
+
+	if (launchTimeFizzle > fizzleTime) {
+		this->Event_Fizzle();
+	}
 }
 
 /*
@@ -319,7 +332,7 @@ void idProjectile::FreeLightDef( void ) {
 idProjectile::Launch
 =================
 */
-void idProjectile::Launch( const idVec3 &start, const idVec3 &dir, const idVec3 &pushVelocity, const float timeSinceFire, const float dmgPower ) {
+void idProjectile::Launch( const idVec3 &start, const idVec3 &dir, const idVec3 &pushVelocity, const float timeSinceFire, const float dmgPower) {
 	float			fuse;
 	idVec3			velocity;
 	float			linear_friction;
@@ -333,6 +346,10 @@ void idProjectile::Launch( const idVec3 &start, const idVec3 &dir, const idVec3 
 	idVec3			tmp;
 	int				contents;
  	int				clipMask;
+
+	idVec3		fizzleDistance;
+	int			fizzleTime;
+	int			launchTimeFizzle;
 
  	// allow characters to throw projectiles during cinematics, but not the player
  	if ( owner.GetEntity() && !owner.GetEntity()->IsType( idPlayer::GetClassType() ) ) {
@@ -508,6 +525,16 @@ void idProjectile::Launch( const idVec3 &start, const idVec3 &dir, const idVec3 
 
 	if ( g_perfTest_noProjectiles.GetBool() ) {
 		PostEventMS( &EV_Remove, 0 );
+	}
+
+	// remove the projectile after a short time
+
+	launchTimeFizzle = gameLocal.time;
+	fizzleTime = gameLocal.time - 1;
+	fizzleDistance = start + idVec3(1, 1, 1);
+
+	if (fizzleTime > launchTimeFizzle) {
+		Fizzle();
 	}
 }
 

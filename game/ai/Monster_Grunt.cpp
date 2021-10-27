@@ -3,6 +3,7 @@
 #pragma hdrstop
 
 #include "../Game_local.h"
+#include "../Player.h"
 
 class rvMonsterGrunt : public idAI {
 public:
@@ -38,10 +39,13 @@ private:
 	// Torso States
 	stateResult_t		State_Torso_Enrage		( const stateParms_t& parms );
 	stateResult_t		State_Torso_Pain		( const stateParms_t& parms );
-	stateResult_t		State_Torso_LeapAttack	( const stateParms_t& parms );
+	stateResult_t		State_Torso_LeapAttack	( const stateParms_t& parms );			
 
 	CLASS_STATES_PROTOTYPE ( rvMonsterGrunt );
 };
+
+
+idPlayer *player;
 
 CLASS_DECLARATION( idAI, rvMonsterGrunt )
 END_CLASS
@@ -196,6 +200,7 @@ rvMonsterGrunt::OnDeath
 */
 void rvMonsterGrunt::OnDeath ( void ) {
 	RageStop ( );
+	player->ReceiveExperience(10);
 	return idAI::OnDeath ( );
 }
 

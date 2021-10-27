@@ -87,12 +87,12 @@ entityDef weapon_machinegun
 	"joint_world_flash"			"muzzle_flash"
 
 	"inv_weapon"				"weapon_machinegun"
-	"inv_start_ammo_machinegun"		"4000"
+	"inv_start_ammo_machinegun"		"1"
 	"inv_item"					"1"
 	"inv_icon"					"gfx/guis/hud/icons/item_machinegun.tga"
 	"inv_name"					"#str_107406"
 
-	"fireRate"					".25"
+	"fireRate"					".75"
 	"spread"					"4"
 
 	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
@@ -101,8 +101,8 @@ entityDef weapon_machinegun
 	
 	"ammoType"					"ammo_machinegun"
 	"ammoRequired"				"1"
-	"clipSize"					"70"
-	"lowAmmo"					"15"
+	"clipSize"					"1"
+	"lowAmmo"					"0"
 	"gui"						"guis/weapons/machinegun_ammo.gui"
 	"gui2"						"guis/weapons/machinegun_inview_scope.gui"
 
@@ -342,7 +342,7 @@ model weapon_machinegun_world
 
 entityDef hitscan_bullet
 {
-	"range"						"40000"
+	"range"						"850"
 
 	"fx_impact"				"effects/weapons/machinegun/impact_default.fx"
 	"fx_impact_water"			"effects/ambient/splash_smll.fx"
@@ -380,7 +380,7 @@ entityDef hitscan_zoomed_bullet
 entityDef damage_machinegun
 {
 	"inherit"					"damage_bullet"
-	"damage"					"20"
+	"damage"					"24"
 	"damage_flesh"				"25"
 
 	"deathPush"					"100"
@@ -400,14 +400,14 @@ entityDef damage_machinegun_flesh
 entityDef damage_machinegun_zoom
 {
 	"inherit"					"damage_machinegun"
-	"damage"					"80"
-	"damage_flesh"				"113"
+	"damage"					"24"
+	"damage_flesh"				"25"
 }
 
 entityDef damage_machinegun_zoom_flesh
 {
 	"inherit"					"damage_machinegun"
-	"damage"					"113"
+	"damage"					"25"
 }
 
 //---------------------------------------------------------------

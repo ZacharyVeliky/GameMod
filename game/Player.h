@@ -1154,6 +1154,15 @@ private:
 	stateResult_t			State_Legs_Land					( const stateParms_t& parms );
 	stateResult_t			State_Legs_Dead					( const stateParms_t& parms );
 	void					Show_Quests						(void);
+
+	// player receives experience for a kill
+	public : void			ReceiveExperience				(int exp);
+	
+	// Return current player experience
+	public : int			GetPlayerExperience				( void );
+
+	// Return current player experience
+	void					LevelUp							( int exp );
 	
  	CLASS_STATES_PROTOTYPE( idPlayer );
 };
