@@ -265,6 +265,30 @@ public:
 //	idList<rvDatabaseEntry>	database;
 	
 	int						secretAreasDiscovered;
+
+	///////////////////////////////
+	// A bunch of stuff I added
+	// ////////////////////////////
+	
+	// Player experience
+	int playerExperience = 0;
+
+	// Skill points
+	int skillpoints = 0;
+
+	// Player skill options
+	int healthLevel = 0;
+	int magicLevel = 0;
+	int attackLevel = 0;
+
+	// player receives experience for a kill
+	public: void			ReceiveExperience(int exp);
+
+	  // Return current player experience
+	public: int			GetPlayerExperience(void);
+
+	  // Return current player experience
+	void					LevelUp(int exp);
 };
 
 class idPlayer : public idActor {
@@ -1155,15 +1179,12 @@ private:
 	stateResult_t			State_Legs_Dead					( const stateParms_t& parms );
 	void					Show_Quests						(void);
 
-	// player receives experience for a kill
-	public : void			ReceiveExperience				(int exp);
-	
-	// Return current player experience
-	public : int			GetPlayerExperience				( void );
 
-	// Return current player experience
-	void					LevelUp							( int exp );
+
+
 	
+
+
  	CLASS_STATES_PROTOTYPE( idPlayer );
 };
 

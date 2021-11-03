@@ -1370,4 +1370,3 @@ extern const char* aiMoveCommandString	[ NUM_MOVE_COMMANDS ];
 extern const char* aiFocusString		[ AIFOCUS_MAX ];
 
 #endif /* !__AI_H__ */
- 

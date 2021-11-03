@@ -3037,7 +3037,7 @@ void Cmd_ShuffleTeams_f( const idCmdArgs& args ) {
 void Cmd_Show_Exp(const idCmdArgs& args) {
 
 	idPlayer* player;
-	int exp = player->GetPlayerExperience();
+	int exp = player->inventory.GetPlayerExperience();
 
 	if (exp >= 0)
 		gameLocal.Printf("Player Experience: %d\n", exp);

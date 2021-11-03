@@ -45,8 +45,6 @@ private:
 };
 
 
-idPlayer *player;
-
 CLASS_DECLARATION( idAI, rvMonsterGrunt )
 END_CLASS
 
@@ -200,7 +198,6 @@ rvMonsterGrunt::OnDeath
 */
 void rvMonsterGrunt::OnDeath ( void ) {
 	RageStop ( );
-	player->ReceiveExperience(10);
 	return idAI::OnDeath ( );
 }
 

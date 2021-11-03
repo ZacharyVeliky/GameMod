@@ -117,22 +117,6 @@ const idEventDef EV_Player_DisableObjectives( "disableObjectives" );
 // mekberg: don't suppress showing of new objectives anymore
 const idEventDef EV_Player_AllowNewObjectives( "<allownewobjectives>" );
 
-
-
-// Player experience
-int playerExperience = 0;
-
-// Skill points
-int skillpoints = 0;
-
-// Player skill options
-int healthLevel = 0;
-int magicLevel = 0;
-int attackLevel = 0;
-
-
-
-
 // RAVEN END
 
 CLASS_DECLARATION( idActor, idPlayer )
@@ -14101,13 +14085,15 @@ void idPlayer::Show_Quests() {
 		hud->HandleNamedEvent("tipWindowDown");
 }
 
-void idPlayer::ReceiveExperience(int exp) {
+
+
+void idInventory::ReceiveExperience(int exp) {
 	playerExperience += exp;
 	if (playerExperience >= 10)
-		LevelUp(exp);
+		idInventory::LevelUp(exp);
 }
 
-void idPlayer::LevelUp(int exp) {
+void idInventory::LevelUp(int exp) {
 
 	while (exp >= 10) {
 		skillpoints += 1;
@@ -14115,7 +14101,7 @@ void idPlayer::LevelUp(int exp) {
 	}
 }
 
-int idPlayer::GetPlayerExperience() {
+int idInventory::GetPlayerExperience() {
 	return playerExperience;
 }
 
