@@ -11,6 +11,7 @@
 #include "ai/AI_Manager.h"
 #include "ai/AAS_tactical.h"
 #include "Game_Log.h"
+#include "Player.h"
 // RAVEN END
 
 //#define UI_DEBUG	1
@@ -3751,6 +3752,11 @@ TIME_THIS_SCOPE("idGameLocal::RunFrame - gameDebug.BeginFrame()");
 	D_DrawDebugLines();
 
 	g_simpleItems.ClearModified();
+
+	int exp = player->inventory.GetPlayerExperience();
+	player->inventory.LevelUp(exp);
+
+
 	return ret;
 }
 // RAVEN END

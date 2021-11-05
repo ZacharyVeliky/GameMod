@@ -3671,6 +3671,7 @@ void idAI::OnDeath( void ){
 	if( vehicleController.IsDriving() ){
 		usercmd_t				usercmd;
 
+
 		memset( &usercmd, 0, sizeof( usercmd ) );
 		usercmd.buttons = BUTTON_ATTACK;
 		usercmd.upmove = 300.0f; // This will cause the character to eject.
@@ -3684,6 +3685,7 @@ void idAI::OnDeath( void ){
 	aiManager.RemoveTeammate ( this );
 
 	ExecScriptFunction( funcs.death );
+
 
 /* DONT DROP ANYTHING FOR NOW
 	float rVal = gameLocal.random.RandomInt( 100 );
@@ -3699,8 +3701,6 @@ void idAI::OnDeath( void ){
 		}
 	}
 */
-	idPlayer* player;
-	player->inventory.ReceiveExperience(10);
 }
 
 /*

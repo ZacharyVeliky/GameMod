@@ -271,7 +271,7 @@ public:
 	// ////////////////////////////
 	
 	// Player experience
-	int playerExperience = 0;
+	public: int playerExperience = 0;
 
 	// Skill points
 	int skillpoints = 0;
@@ -286,6 +286,9 @@ public:
 
 	  // Return current player experience
 	public: int			GetPlayerExperience(void);
+
+	  // Return current player skill points
+	public: int			GetSkillPoints(void);
 
 	  // Return current player experience
 	void					LevelUp(int exp);

@@ -887,6 +887,7 @@ public:
 	virtual void				Prethink						( void );
 	virtual void				Postthink						( void );
 
+
 	/*
 	===============================================================================
 							  Threat Management

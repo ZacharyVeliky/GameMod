@@ -14085,17 +14085,13 @@ void idPlayer::Show_Quests() {
 		hud->HandleNamedEvent("tipWindowDown");
 }
 
-
-
-void idInventory::ReceiveExperience(int exp) {
-	playerExperience += exp;
-	if (playerExperience >= 10)
-		idInventory::LevelUp(exp);
-}
+/////////////////////////////
+// experience stuff
+/////////////////////////////
 
 void idInventory::LevelUp(int exp) {
 
-	while (exp >= 10) {
+	if (exp >= 10) {
 		skillpoints += 1;
 		playerExperience -= 10;
 	}
@@ -14103,6 +14099,10 @@ void idInventory::LevelUp(int exp) {
 
 int idInventory::GetPlayerExperience() {
 	return playerExperience;
+}
+
+int idInventory::GetSkillPoints() {
+	return skillpoints;
 }
 
 // RITUAL END

@@ -556,7 +556,7 @@ void Cmd_Give_f( const idCmdArgs &args ) {
 
 	GiveStuffToPlayer( player, args.Argv(1), args.Argv(2) );
 }
-// RITUAL END
+// RITUAL END meme
 
 /*
 ==================
@@ -3034,18 +3034,45 @@ void Cmd_ShuffleTeams_f( const idCmdArgs& args ) {
 //	Player.cpp;
 //}
  
+// Print player experience meme
 void Cmd_Show_Exp(const idCmdArgs& args) {
 
-	idPlayer* player;
-	int exp = player->inventory.GetPlayerExperience();
+	idPlayer		*player;
+	int				exp = 0;
 
+	player = gameLocal.GetLocalPlayer();
+	exp = player->inventory.GetPlayerExperience();
+	
 	if (exp >= 0)
 		gameLocal.Printf("Player Experience: %d\n", exp);
 } 
 
 void Cmd_Print_Meme(const idCmdArgs& args){
 	if (1 == 1) {
-		gameLocal.Printf("unknown item\n");
+		gameLocal.Printf("MEME\n");
+	}
+}
+
+void Cmd_Print_Skp(const idCmdArgs& args){
+
+	idPlayer* player;
+	int				exp = 0;
+	int				skp = 0;
+
+	player = gameLocal.GetLocalPlayer();
+	skp = player->inventory.GetSkillPoints();
+
+	if (exp >= 0)
+		gameLocal.Printf("Skill Points: %d\n", skp);
+}
+
+void Cmd_Level_Up(const idCmdArgs& args) {
+	idPlayer* player;
+	int				exp = 1;
+
+	player = gameLocal.GetLocalPlayer();
+	if (exp == 1) {
+		player->inventory.playerExperience += 10;
 	}
 }
 
@@ -3258,12 +3285,13 @@ void idGameLocal::InitConsoleCommands( void ) {
 // squirrel: Mode-agnostic buymenus
 	cmdSystem->AddCommand( "buyMenu",				Cmd_ToggleBuyMenu_f,		CMD_FL_GAME,				"Toggle buy menu (if in a buy zone and the game type supports it)" );
 	cmdSystem->AddCommand( "buy",					Cmd_BuyItem_f,				CMD_FL_GAME,				"Buy an item (if in a buy zone and the game type supports it)" );
-//	cmdSystem->AddCommand( "meme",					Cmd_Meme_f,					CMD_FL_GAME,				"MEME");
 //	cmdSystem->AddCommand( "talk",					Show_Dialogue,				CMD_FL_GAME,				"Display the dialogue menu with the character the player is facing.");
 //	cmdSystem->AddCommand( "showQuests",			idPlayer::Show_Quests,		CMD_FL_GAME,				"Display the currently accepted side quest");
-//	cmdSystem->AddCommand( "showDict",				Cmd_Show_Dict,				CMD_FL_GAME,					"Display the currently accepted side quest");
-	cmdSystem->AddCommand( "showExp",				Cmd_Show_Exp,				CMD_FL_GAME,					"Display the players experience points");
-	cmdSystem->AddCommand( "meme",					Cmd_Print_Meme,				CMD_FL_GAME,					"meme");
+//	cmdSystem->AddCommand( "showDict",				Cmd_Show_Dict,				CMD_FL_GAME,				"Display the currently accepted side quest");
+	cmdSystem->AddCommand( "showExp",				Cmd_Show_Exp,				CMD_FL_GAME,				"Display the players experience points");
+	cmdSystem->AddCommand( "meme",					Cmd_Print_Meme,				CMD_FL_GAME,				"Display the players experience points");
+	cmdSystem->AddCommand( "lvu",					Cmd_Level_Up,				CMD_FL_GAME,				"Display the players experience points");
+	cmdSystem->AddCommand( "skp",					Cmd_Print_Skp,				CMD_FL_GAME,				"Display the players experience points");
 // RITUAL END
 
 }
