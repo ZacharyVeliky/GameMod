@@ -2362,8 +2362,8 @@ windowDef Desktop
 	}
 	windowDef p_mana
 	{
-		rect	-313,-59,640,480
-		visible	("gui::player_armor" > 0 && "gui::mp" == 0 )
+		rect	-312,-58,640,480
+		visible	("gui::mp" == 0 )
 		windowDef mana_backbar
 		{
 			rect	326,420,125,59
@@ -2404,7 +2404,7 @@ windowDef Desktop
 			rect	392,429,52,26
 			visible	1
 			forecolor	0.866,0.921,0.764,1
-			text	"gui::player_armor"
+			text	"gui::player_mana"
 			textscale	0.5
 			font	"fonts/chain"
 			shear	0,-.22
@@ -2425,7 +2425,16 @@ windowDef Desktop
 			rect	424,458,16,16
 			visible	1
 			background	"gfx/guis/hud/icons/icon_mana"
-			matcolor	0.647,0.627,0.364,0.6
+			matcolor	0.631,0.611,0.349,0.6
 		}
+	}
+	windowDef level_up
+	{
+		rect	267,3,129,32
+		visible	("gui::level_up" == 1 )
+		forecolor	1,1,1,1
+		text	"LEVELUP!"
+		textscale	0.6
+		textalign	1
 	}
 }
