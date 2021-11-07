@@ -1027,4 +1027,6 @@
 	"#str_201036"	"PRESENTS"
 	
 	"#str_201037"	"Warning: Your sound card does not support OpenAL."
+	"#str_201038"	"HELP"
+
 }

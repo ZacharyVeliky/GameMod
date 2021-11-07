@@ -2396,12 +2396,12 @@ windowDef Desktop
 		}
 		windowDef d_mana_amount
 		{
-			rect	390,427,58,31
+			rect	344,427,103,31
 			visible	0
 		}
 		windowDef mana_amount
 		{
-			rect	392,429,52,26
+			rect	349,429,94,26
 			visible	1
 			forecolor	0.866,0.921,0.764,1
 			text	"gui::player_mana"
