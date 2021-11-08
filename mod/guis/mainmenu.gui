@@ -4,8 +4,6 @@ windowDef Desktop
 	menugui	1
 	rect	0,0,640,480
 	backcolor	0,0,0,1
-	::	mousey
-	-	186
 	definevec4	"corner"	0.564,0.603,0.286,0.4
 	definevec4	"corner_0"	0.564,0.603,0.286,0
 	definevec4	"white"	1,1,1,1
@@ -22,8 +20,8 @@ windowDef Desktop
 	definevec4	"orange"	0.890,0.537,0,1
 	definevec4	"yellow_8"	1,0.745,0.137,0.8
 	definevec4	"grey1_4"	0.435,0.435,0.435,0.4
-	definefloat	"tooltip_x_offset"	gui
-	definefloat	"tooltip_y_offset"	gui
+	definefloat	"tooltip_x_offset"	gui::mousex-255
+	definefloat	"tooltip_y_offset"	gui::mousey-186
 	defineicon	"fve"	"gfx/guis/mainmenu/icon_favorite.tga"
 	defineicon	"pse"	"gfx/guis/mainmenu/icon_locked.tga"
 	defineicon	"dse"	"gfx/guis/mainmenu/icon_dedserver.tga"
@@ -734,7 +732,7 @@ windowDef Desktop
 		}
 		windowDef btmbar
 		{
-			rect	-398,350,1045,129
+			rect	-399,351,1045,129
 			visible	1
 			background	"gfx/guis/mainmenu/btmbar"
 			matcolor	1,1,1,1
@@ -972,6 +970,139 @@ windowDef Desktop
 		{
 			rect	-640,0,640,480
 			visible	0
+		}
+		windowDef p_newgame
+		{
+			rect	0,0,640,480
+			visible	0
+			windowDef t_new_title
+			{
+				rect	39,19,314,16
+				visible	1
+				forecolor	1,1,1,0
+				text	"#str_200000"
+				textscale	.25
+				font	"fonts/marine"
+			}
+			windowDef new_b1
+			{
+				rect	21,172,208,52
+				visible	1
+				background	"gfx/guis/mainmenu/b2_dark"
+				matcolor	1,1,1,0.4
+			}
+			windowDef new_b2
+			{
+				rect	20,202,208,51
+				visible	1
+				background	"gfx/guis/mainmenu/b2_dark"
+				matcolor	1,1,1,0.4
+			}
+			windowDef new_b3
+			{
+				rect	20,232,208,51
+				visible	1
+				background	"gfx/guis/mainmenu/b2_dark"
+				matcolor	1,1,1,0.4
+			}
+			windowDef new_b4
+			{
+				rect	20,262,208,51
+				visible	1
+				background	"gfx/guis/mainmenu/b2_dark"
+				matcolor	1,1,1,0.4
+			}
+			windowDef new_t_b1
+			{
+				rect	36,184,193,23
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"#str_200014"
+				textscale	.31
+				font	"fonts/marine"
+			}
+			windowDef new_t_b2
+			{
+				rect	36,214,193,23
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"#str_200015"
+				textscale	.31
+				font	"fonts/marine"
+			}
+			windowDef new_t_b3
+			{
+				rect	36,244,193,23
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"#str_200016"
+				textscale	.31
+				font	"fonts/marine"
+			}
+			windowDef new_t_b4
+			{
+				rect	36,274,193,23
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"#str_200017"
+				textscale	.31
+				font	"fonts/marine"
+			}
+			windowDef new_back
+			{
+				rect	532,441,109,30
+				visible	1
+				background	"gfx/guis/mainmenu/b4_light"
+				matcolor	0.545,0.588,0.294,0
+			}
+			windowDef new_back_corner
+			{
+				rect	542,449,11,11
+				visible	1
+				background	"gfx/guis/mainmenu/corner"
+				matcolor	0.564,0.603,0.286,0
+			}
+			windowDef new_t_back
+			{
+				rect	552,443,88,17
+				visible	1
+				forecolor	1,1,1,0
+				text	"#str_200018"
+				textscale	.28
+				font	"fonts/marine"
+			}
+			windowDef new_diffDescript
+			{
+				rect	239,181,345,139
+				visible	1
+				forecolor	1,1,1,0.6
+				text	"#str_200019"
+				textscale	0.25
+				font	"fonts/lowpixel"
+			}
+			windowDef new_bstart
+			{
+				rect	237,222,356,43
+				visible	1
+				background	"gfx/guis/mainmenu/b6_light"
+				matcolor	0.545,0.588,0.294,0.4
+			}
+			windowDef new_t_bstart
+			{
+				rect	265,228,198,25
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"#str_200020"
+				textscale	.33
+				font	"fonts/marine"
+			}
+			windowDef new_bstart_corner
+			{
+				rect	248,232,18,18
+				visible	1
+				background	"gfx/guis/mainmenu/corner"
+				matcolor	0.564,0.603,0.286,0.4
+			}
 		}
 		windowDef p_savegame
 		{
@@ -14968,11 +15099,6 @@ windowDef Desktop
 				}
 			}
 		}
-		windowDef p_newgame
-		{
-			rect	0,0,640,480
-			visible	0
-		}
 	}
 	windowDef fade
 	{
@@ -18893,7 +19019,7 @@ windowDef Desktop
 
 		windowDef main_b_returnmp
 		{
-			rect	24,215,333,26
+			rect	24,214,333,26
 			visible	0
 
 			onMouseEnter {
@@ -24761,23 +24887,5 @@ windowDef Desktop
 			}
 
 		}
-	}
-	windowDef Help1
-	{
-		rect	389,85,243,50
-		visible	1
-		forecolor	1,1,1,1
-		text	"Help"
-		textscale	0.6
-		font	"fonts/lowpixel"
-	}
-	windowDef Help2
-	{
-		rect	390,124,243,224
-		visible	1
-		forecolor	1,1,1,1
-		text	"Welcome to the trash\nPress Q To use magic \n\nPress E to talk to characters \n "
-		textscale	0.3
-		font	"fonts/lowpixel"
 	}
 }
