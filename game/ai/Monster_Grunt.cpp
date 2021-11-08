@@ -198,13 +198,6 @@ rvMonsterGrunt::OnDeath
 */
 void rvMonsterGrunt::OnDeath ( void ) {
 	RageStop ( );
-	
-	idPlayer* player;
-
-	player = gameLocal.GetLocalPlayer();
-	player->inventory.playerExperience += 10;
-	//player->inventory.ReceiveExperience(10);
-	
 	return idAI::OnDeath ( );
 }
 

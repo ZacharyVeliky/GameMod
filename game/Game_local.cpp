@@ -3753,9 +3753,13 @@ TIME_THIS_SCOPE("idGameLocal::RunFrame - gameDebug.BeginFrame()");
 
 	g_simpleItems.ClearModified();
 
+	idUserInterface* hud;
+	hud = player->hud;
+
 	int exp = player->inventory.GetPlayerExperience();
 	player->inventory.LevelUp(exp);
 
+	player->inventory.RechargeMana(hud);
 
 	return ret;
 }

@@ -268,7 +268,7 @@ public:
 
 	///////////////////////////////
 	// A bunch of stuff I added
-	// ////////////////////////////
+	///////////////////////////////
 	
 	// Player experience
 	public: int playerExperience = 0;
@@ -282,17 +282,50 @@ public:
 	int attackLevel = 0;
 
 	// player receives experience for a kill
-	public: void			ReceiveExperience(int exp);
+	public: void		ReceiveExperience(int exp); //broken
 
 	  // Return current player experience
 	public: int			GetPlayerExperience(void);
 
 	  // Return current player skill points
-	public: int			GetSkillPoints(void);
+	public: 
+		int			GetSkillPoints(void);
+		int			GetAttackLevel(void);
+		void		UseSkillPoint(void);
 
-	  // Return current player experience
+	  // Level up the character
 	void					LevelUp(int exp);
+
+	  // Level up health
+	void					LevelMagic(void);
+
+	  // Level up magic
+	void					LevelHealth(void);
+
+	  // Level up the character
+	void					LevelAttack(void);
+
+
+	// Magic
+
+	public: 
+		int mana = 100;
+		int maxMana = 100;
+		int manaPulse = 500;
+		int nextManaPulse = 0;
+		int GetMana(void);
+		void UseMana(int m);
+		int GetMaxMana(void);
+		void RechargeMana(void);
+
+	void RechargeMana(idUserInterface* _hud);
+
+	void setMaxMana(void);
+	
+	public: void UpdateHudMana(idUserInterface* hud);
 };
+
+
 
 class idPlayer : public idActor {
 public:

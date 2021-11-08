@@ -17,6 +17,7 @@
 #include "ai/AAS_tactical.h"
 #include "Healing_Station.h"
 #include "ai/AI_Medic.h"
+#include "Weapon.h"
 
 // RAVEN BEGIN
 // nrausch: support for turning the weapon change ui on and off
@@ -7210,6 +7211,7 @@ void idPlayer::UpdateFocus( void ) {
 
 				ui->SetStateString( "player_health", va("%i", health ) );
 				ui->SetStateString( "player_armor", va( "%i%%", inventory.armor ) );
+				ui->SetStateString( "player_mana", va( "%i%%", inventory.mana ) );
 
 				kv = ent->spawnArgs.MatchPrefix( "gui_", NULL );
 				while ( kv ) {
@@ -14103,6 +14105,118 @@ int idInventory::GetPlayerExperience() {
 
 int idInventory::GetSkillPoints() {
 	return skillpoints;
+}
+
+void idInventory::UseSkillPoint() {
+	skillpoints -= 1;
+}
+
+int idInventory::GetAttackLevel() {
+	return attackLevel;
+}
+
+void idInventory::LevelHealth() {
+	if (skillpoints >= 1) {
+		healthLevel += 1;
+		maxHealth = 100 + (10 * healthLevel);
+		gameLocal.Printf("Health increased by 1\n");
+		gameLocal.Printf("Current health level: %d \n\n", healthLevel);
+		UseSkillPoint();
+	}
+	else
+		gameLocal.Printf("Not enough skill points");
+}
+
+void idInventory::LevelMagic() {
+	if (skillpoints >= 1) {
+		magicLevel += 1;
+		setMaxMana();
+		gameLocal.Printf("Magic increased by 1\n");
+		gameLocal.Printf("Current magic level: %d \n\n", magicLevel);
+		UseSkillPoint();
+	}
+	else
+		gameLocal.Printf("Not enough skill points");
+}
+
+void idInventory::LevelAttack() {
+	if (skillpoints >= 1) {
+		attackLevel += 1;
+		gameLocal.Printf("Attack increased by 1\n");
+		gameLocal.Printf("Current attack level: %d \n\n", attackLevel);
+		UseSkillPoint();
+	}
+	else
+		gameLocal.Printf("Not enough skill points");
+
+}
+
+
+/////////////////////////////
+// Magic stuff
+/////////////////////////////
+
+int idInventory::GetMana() {
+	return mana;
+}
+
+void idInventory::UseMana(int m){
+	mana -= m;
+}
+
+int idInventory::GetMaxMana() {
+	return maxMana;
+}
+
+void idInventory::setMaxMana() {
+	maxMana = maxMana + (magicLevel * 10);
+}
+
+void idInventory::RechargeMana(idUserInterface* _hud) {
+
+	if (gameLocal.time > nextManaPulse)
+		if (mana < maxMana) {
+			mana += 1;
+			nextManaPulse = gameLocal.time + manaPulse;
+		}
+		if (mana > maxMana) {
+			mana = maxMana;
+		}
+
+	UpdateHudMana(_hud);
+}
+
+/*
+================
+idPlayer::UpdateHudMana
+================
+*/
+void idInventory::UpdateHudMana(idUserInterface * _hud) {
+	int currentMana;
+	int maxMana;
+	idPlayer* player;
+
+	player = gameLocal.GetLocalPlayer();
+
+	//assert(weapon);
+	//assert(_hud);
+
+	currentMana = player->inventory.GetMana();
+	maxMana = player->inventory.GetMaxMana();
+
+	if (currentMana < 0) {
+		// show infinite mana
+		_hud->SetStateString("player_mana", "-1");
+		_hud->SetStateString("player_totalmana", "-1");
+		_hud->SetStateFloat("player_manapct", 1.0f);
+	}
+	else {
+		_hud->SetStateFloat("player_manapct", (float)currentMana / (float)maxMana);
+		_hud->SetStateInt("player_totalmana", maxMana);
+		_hud->SetStateInt("player_mana", currentMana);
+	}
+
+	_hud->SetStateBool("player_mana_empty", (currentMana == 0));
 }
 
 // RITUAL END

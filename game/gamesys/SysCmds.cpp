@@ -34,6 +34,8 @@
 #include "NoGameTypeInfo.h"
 #endif
 
+#include "../Weapon.h"
+
 /*
 ==================
 Cmd_GetFloatArg
@@ -3048,8 +3050,10 @@ void Cmd_Show_Exp(const idCmdArgs& args) {
 } 
 
 void Cmd_Print_Meme(const idCmdArgs& args){
+	rvWeapon* weapon;
+	
 	if (1 == 1) {
-		gameLocal.Printf("MEME\n");
+		gameLocal.Printf("Current weapon is: %s\n", weapon);
 	}
 }
 
@@ -3074,6 +3078,74 @@ void Cmd_Level_Up(const idCmdArgs& args) {
 	if (exp == 1) {
 		player->inventory.playerExperience += 10;
 	}
+}
+
+void Cmd_Use_Magic(const idCmdArgs& args) {
+	idPlayer* player;
+
+	player = gameLocal.GetLocalPlayer();
+	int currentMana = player->inventory.GetMana();
+	gameLocal.Printf("Magic Before Attack: %d\n", currentMana);
+	if (currentMana >= 10) {
+		player->inventory.UseMana(10);
+		currentMana = player->inventory.GetMana();
+		gameLocal.Printf("Magic after attack: %d\n\n", currentMana);
+	}
+}
+
+void Cmd_Level_Health(const idCmdArgs& args) {
+	idPlayer* player;
+
+	player = gameLocal.GetLocalPlayer();
+	int currentSkillPoints = player->inventory.GetSkillPoints();
+	if (currentSkillPoints >= 1) {
+		player->inventory.LevelHealth();
+	}
+}
+
+void Cmd_Level_Magic(const idCmdArgs& args) {
+	idPlayer* player;
+
+	player = gameLocal.GetLocalPlayer();
+	int currentSkillPoints = player->inventory.GetSkillPoints();
+	if (currentSkillPoints >= 1) {
+		player->inventory.LevelMagic();
+	}
+}
+
+void Cmd_Level_Attack(const idCmdArgs& args) {
+	idPlayer* player;
+
+	player = gameLocal.GetLocalPlayer();
+	int currentSkillPoints = player->inventory.GetSkillPoints();
+	if (currentSkillPoints >= 1) {
+		player->inventory.LevelAttack();
+	}
+}
+
+void LevelSkill(const idStr skill) {
+	idPlayer* player;
+
+	player = gameLocal.GetLocalPlayer();
+	int currentSkillPoints = player->inventory.GetSkillPoints();
+
+	if (skill == "health") {
+		player->inventory.LevelHealth();
+		return;
+	}
+	if (skill == "magic") {
+		player->inventory.LevelMagic();
+		return;
+	}
+	if (skill == "attack") {
+		player->inventory.LevelAttack();
+		return;
+	}
+}
+
+void Cmd_Level_Skill(const idCmdArgs& args) {
+
+	LevelSkill(args.Argv(1));
 }
 
 #ifndef _FINAL
@@ -3292,6 +3364,11 @@ void idGameLocal::InitConsoleCommands( void ) {
 	cmdSystem->AddCommand( "meme",					Cmd_Print_Meme,				CMD_FL_GAME,				"Display the players experience points");
 	cmdSystem->AddCommand( "lvu",					Cmd_Level_Up,				CMD_FL_GAME,				"Display the players experience points");
 	cmdSystem->AddCommand( "skp",					Cmd_Print_Skp,				CMD_FL_GAME,				"Display the players experience points");
+	cmdSystem->AddCommand( "useMagic",				Cmd_Use_Magic,				CMD_FL_GAME,				"Display the players experience points");
+	cmdSystem->AddCommand( "level health",			Cmd_Level_Health,				CMD_FL_GAME,				"Display the players experience points");
+	cmdSystem->AddCommand( "level magic",			Cmd_Level_Magic,				CMD_FL_GAME,				"Display the players experience points");
+	cmdSystem->AddCommand( "level attack",			Cmd_Level_Attack,				CMD_FL_GAME,				"Display the players experience points");
+	cmdSystem->AddCommand( "level",					Cmd_Level_Skill,				CMD_FL_GAME,				"Display the players experience points");
 // RITUAL END
 
 }

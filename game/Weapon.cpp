@@ -2519,9 +2519,9 @@ void rvWeapon::Attack( bool altAttack, int num_attacks, float spread, float fuse
 	if ( !gameLocal.isClient ) {
 		// check if we're out of ammo or the clip is empty
 		int ammoAvail = owner->inventory.HasAmmo( ammoType, ammoRequired );
-		if ( !ammoAvail || ( ( clipSize != 0 ) && ( ammoClip <= 0 ) ) ) {
-			return;
-		}
+		//if ( !ammoAvail || ( ( clipSize != 0 ) && ( ammoClip <= 0 ) ) ) {
+		//	return;
+		//}
 
 		owner->inventory.UseAmmo( ammoType, ammoRequired );
 		if ( clipSize && ammoRequired ) {
@@ -2592,7 +2592,9 @@ void rvWeapon::Attack( bool altAttack, int num_attacks, float spread, float fuse
 	// The attack is either a hitscan or a launched projectile, do that now.
 	if ( !gameLocal.isClient ) {
 		idDict& dict = altAttack ? attackAltDict : attackDict;
-		power *= owner->PowerUpModifier( PMOD_PROJECTILE_DAMAGE );
+		power *= (owner->PowerUpModifier( PMOD_PROJECTILE_DAMAGE ));
+		power += (owner->inventory.attackLevel * 2);
+		gameLocal.Printf("Power: %d \n", power);
 		if ( altAttack ? wfl.attackAltHitscan : wfl.attackHitscan ) {
 			Hitscan( dict, muzzleOrigin, muzzleAxis, num_attacks, spread, power );
 		} else {
