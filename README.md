@@ -15,9 +15,11 @@ Heal: Heal yourself in the middle of battle<br />
 
 ### XP and leveling up
 Each skill point earned can be used in 3 different attributes Magic, Health, Attack<br />
+To try the features, use the lv command to instantly level up and the level command followed by the skill to level up the skill i.e., “level attack” </br>
 Magic: Increases mana and magic damage<br />
 Health: Increases Max health<br />
 Attack: Increases attack with weapons <br />
+
 
 ### Side Quests
 A way to earn even more experience <br />
