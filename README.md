@@ -1,6 +1,6 @@
 # GameMod
 
-The objective of my game mod project was to make Quake 4 more likr Skyrim. this includes Changeing weapons to function like Skyrim weapons, adding a magic system, added a dialogue tree, and added side quests. 
+The objective of my game mod project was to make Quake 4 more like Skyrim. this includes Changeing weapons to function like Skyrim weapons, adding a magic system, added a dialogue tree, and side quests. 
 
 ## New Features
 
